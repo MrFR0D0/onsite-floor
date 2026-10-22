@@ -25,6 +25,14 @@ cd backend
 cp .env.example .env
 ```
 
+## Running the tests
+
+```bash
+cd backend
+uv run pytest            # run all tests
+uv run pytest --cov      # with a coverage report
+```
+
 ## License
 
 Source-available under the [PolyForm Shield License 1.0.0](LICENSE). The source code is public and free to use, but the license does not allow using it to build a competing product. This is not an OSI-approved open-source license.
