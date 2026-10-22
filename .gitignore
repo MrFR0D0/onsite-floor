@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# JetBrains IDEs
+.idea/
+
+# Personal build journal (local notes, not part of the repository history)
+BUILD_LOG.md
