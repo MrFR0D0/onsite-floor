@@ -1,0 +1,13 @@
+[project]
+name = "onsite-floor"
+version = "0.1.0"
+description = "Self-hosted OEE and shop-floor traceability for small manufacturers"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
