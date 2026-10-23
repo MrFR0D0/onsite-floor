@@ -35,7 +35,7 @@ uv run pytest --cov      # with a coverage report
 
 ## Code quality
 
-[Ruff](https://docs.astral.sh/ruff/) is used for linting and formatting.
+[Ruff](https://docs.astral.sh/ruff/) is used for linting and formatting, [mypy](https://mypy.readthedocs.io/) in strict mode for type checking.
 
 ```bash
 cd backend
@@ -43,6 +43,7 @@ uv run ruff check .            # find problems
 uv run ruff check . --fix      # fix what can be fixed safely
 uv run ruff format .           # format the code
 uv run ruff format --check .   # only check formatting
+uv run mypy                    # check types
 ```
 
 ## License
