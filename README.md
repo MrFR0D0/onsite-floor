@@ -33,6 +33,18 @@ uv run pytest            # run all tests
 uv run pytest --cov      # with a coverage report
 ```
 
+## Code quality
+
+[Ruff](https://docs.astral.sh/ruff/) is used for linting and formatting.
+
+```bash
+cd backend
+uv run ruff check .            # find problems
+uv run ruff check . --fix      # fix what can be fixed safely
+uv run ruff format .           # format the code
+uv run ruff format --check .   # only check formatting
+```
+
 ## License
 
 Source-available under the [PolyForm Shield License 1.0.0](LICENSE). The source code is public and free to use, but the license does not allow using it to build a competing product. This is not an OSI-approved open-source license.
