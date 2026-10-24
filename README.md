@@ -1,5 +1,7 @@
 # onsite-floor
 
+[![CI](https://github.com/MrFR0D0/onsite-floor/actions/workflows/ci.yml/badge.svg)](https://github.com/MrFR0D0/onsite-floor/actions/workflows/ci.yml)
+
 Self-hosted OEE and shop-floor traceability for small manufacturers.
 
 > **Status:** early development. The project is being built step by step.
