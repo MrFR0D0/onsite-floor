@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Self-hosted OEE and shop-floor traceability for small manufacturers"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.115",
+    "fastapi==0.162.0",
     "pydantic-settings>=2.4",
     "uvicorn>=0.30",
 ]
@@ -14,7 +14,7 @@ dev = [
     "pytest>=8",
     "pytest-cov>=5",
     "httpx2==2.16.0",
-    "ruff>=0.6",
+    "ruff>=0.16",
     "mypy>=1.11",
 ]
 
@@ -57,6 +57,7 @@ select = [
     "ASYNC",  # flake8-async: blocking calls inside async functions
     "RET",    # flake8-return
     "T20",    # flake8-print: forgotten print() calls
+    "G",      # flake8-logging-format: no f-strings or concatenation in logging calls
 ]
 ignore = [
     "ANN401",  # an explicit `Any` is allowed; mypy strict guards the implicit ones
