@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from onsite_floor.core.http_errors import add_exception_handlers
 from onsite_floor.core.logging import configure_logging
 from onsite_floor.core.settings import Settings, get_settings
 
@@ -33,6 +34,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app = FastAPI(title="onsite-floor", debug=settings.fastapi_debug_mode, lifespan=lifespan)
     app.state.settings = settings
+    add_exception_handlers(app)
 
     @app.get("/api/health", tags=["system"])
     async def health() -> dict[str, str]:

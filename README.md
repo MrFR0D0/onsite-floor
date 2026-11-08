@@ -27,6 +27,41 @@ cd backend
 cp .env.example .env
 ```
 
+| Variable | Values | Default | Meaning |
+|---|---|---|---|
+| `ONSITE_FLOOR_FASTAPI_DEBUG_MODE` | `true` / `false` | `false` | FastAPI debug mode (detailed error pages) |
+| `ONSITE_FLOOR_LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` | `INFO` | Minimum severity that is logged |
+| `ONSITE_FLOOR_LOG_FORMAT` | `text` / `json` | `text` | Human-readable lines or one JSON object per line |
+
+## Error format
+
+Every error the API returns has the same JSON shape, so a frontend can handle them in one place:
+
+```json
+{"message": "Process '42' was not found", "code": "PROCESS_NOT_FOUND"}
+```
+
+`message` is for developers and logs; the frontend chooses its own user-facing text by the stable `code`. An invalid request also carries `details` with one entry per offending field:
+
+```json
+{
+  "message": "Request validation failed",
+  "code": "REQUEST_INVALID",
+  "details": [{"field": "name", "message": "Field required"}]
+}
+```
+
+| Situation | Status | `code` |
+|---|---|---|
+| Object does not exist | 404 | `OBJECT_NOT_FOUND` or a feature-specific code |
+| Conflict with the current state | 409 | `CONFLICT` or a feature-specific code |
+| Data violates a business rule | 422 | `VALIDATION_FAILED` or a feature-specific code |
+| Not authenticated / not allowed | 401 / 403 | `AUTHENTICATION_REQUIRED` / `PERMISSION_DENIED` |
+| External system unavailable | 502 | `GATEWAY_UNAVAILABLE` |
+| Malformed request | 422 | `REQUEST_INVALID` |
+| Unknown path / wrong method | 404 / 405 | `NOT_FOUND` / `METHOD_NOT_ALLOWED` |
+| Unexpected failure | 500 | `INTERNAL_ERROR` (no internal details are exposed) |
+
 ## Running the tests
 
 ```bash
